@@ -45,20 +45,18 @@ A central location for any salsa dancer to learn and practice their sick moves ð
 | `POST`     | `/login`                           | Sends Login form data to the server.                         | { email, password }                                      |
 | `GET`      | `/signup`                          | Renders `signup` form view.                                  |                                                          |
 | `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DB. | {  email, password , level }                                    |
-| `GET`      | `/private/edit-profile`            | Private route. Renders `edit-profile` form view.             |                                                          |
-| `PUT`      | `/private/edit-profile`            | Private route. Sends edit-profile info to server and updates user in DB. | { email, password, name , level, picture , bio } |
-| `GET`      | `/private/videos`               | Private route. Renders the page with all beginner, intermediate, and advanced videos                  |                                                          |
-| `GET`      | `/private/videos/upload`               | Private route. Renders a page with a form                  |                                                          |
-| `POST`      | `/private/videos/upload`               | Private route. Sends the form for users to upload a video                  |  { title , level , description , uploadVideo}                                                        |
-| `PUT`      | `/private/videos/upload`               | Private route. Updates the user's profile to add the video(s) they have uploaded                  |                                                          |
-| `PUT`      | `/private/videos/:videoID/edit`               | Private route. Allows a user to edit a video that they have uploaded                  |                                                          |
-| `DELETE`      | `/private/videos/delete/:videoID`               | Private route. Allows a user to delete a video that they have uploaded                  |                                                          |
-| `GET`      | `/private/videos/search`               | Private route. Render a page where users can search for salsa videos by title, duration, and level (dropdown list)                  |                                                          |
-| `POST`      | `/private/videos/search`               | Private route. Sends the form to the web page and returns the search results                  |    { title , duration , level }                                                      |
-| `GET`     | `/private/favorites/`              | Private route. Renders a page with the list of your favorite videos     |                                  |
-| `POST`     | `/private/favorites/`              | Private route. Sends the "favorited" videos from the `/private/videos` page to the `/private/favorites` page     |                                  |
-| `DELETE`     | `/private/favorites/:videoId`              | Private route. Removes a given video from the users' "favorites" list      |                                  |
-| `DELETE`   | `/private/favorites/:restaurantId` | Private route. Deletes the existing favorite from the current user. |                                                          |
+| `GET`      | `/edit-profile`            | Private route. Renders `edit-profile` form view.             |                                                          |
+| `PUT`      | `/edit-profile`            | Private route. Sends edit-profile info to server and updates user in DB. | { email, password, name , level, picture , bio } |
+| `GET`      | `/videos`               | Private route. Renders the page with all beginner, intermediate, and advanced videos                  |                                                          |
+| `GET`      | `/videos/upload`               | Private route. Renders a page with a form                  |                                                          |
+| `POST`      | `/videos/upload`               | Private route. Sends the form for users to upload a video                  |  { title , level , description , uploadVideo}                                                        |
+| `PUT`      | `/videos/:videoID/edit`               | Private route. Allows a user to edit a video that they have uploaded                  |                                                          |
+| `DELETE`      | `/videos/delete/:videoID`               | Private route. Allows a user to delete a video that they have uploaded                  |                                                          |
+| `GET`      | `/videos/search`               | Private route. Render a page where users can search for salsa videos by title, duration, and level (dropdown list)                  |                                                          |
+| `POST`      | `/videos/search`               | Private route. Sends the form to the web page and returns the search results                  |    { title , duration , level }                                                      |
+| `GET`     | `/favorites/`              | Private route. Renders a page with the list of your favorite videos     |                                  |
+| `POST`     | `/favorites/:videoId`              | Private route. Sends the "favorited" videos from the `/videos` page to the `/favorites` page     |                                  |
+| `DELETE`     | `/favorites/:videoId`              | Private route. Removes a given video from the users' "favorites" list      |                                  |
 
 
 
@@ -77,7 +75,7 @@ User model
   password: String,
   picture: String,
   level: [enum: Beginner, Intermediate, Advanced],
-  favorites: [FavoriteId],
+  favorites: [videoID],
 }
 
 ```
@@ -95,16 +93,6 @@ Video model
 
 ```
 
-
-
-Favorites model
-
-```javascript
-{
-  videoId: [ObjectID],
-}
-
-```
 
 
 
