@@ -20,7 +20,7 @@ A central location for any salsa dancer to learn and practice their sick moves ð
 - **sign up** - As a user I want to sign up on the web page and enter my salsa level so I can more easily find videos for me
 - **login** - As a user I want to be able to log in on the web page so that I can get back to my account
 - **logout** - As a user I want to be able to log out from the web page so that I can make sure no one will access my account
-- - **landing page** - As a user I want to be able to access the landing page where I can see a "salsa video of the day", and access the other parts of the web page
+- **landing page** - As a user I want to be able to access the landing page where I can see a "salsa video of the day", and access the other parts of the web page
 - **videos** - As a user, I want to navigate to the "videos" page to see all beginner, intermediate, and advanced media. 
 - **upload** - As a user, I want to have a form where I can upload my own videos to the website
 - **search** - As a user, I want to be able to search for a video by title, duration, and level
