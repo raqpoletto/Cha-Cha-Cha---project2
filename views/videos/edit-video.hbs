@@ -1,0 +1,30 @@
+<form action="/videos/{{video._id}}/edit" method="POST">
+<label for="title">Title</label>
+<input type="text" name="title" value="{{video.title}}">
+<label>Level
+    <select name="level" id="level">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+  </label>
+  <label>
+    Duration
+    <select name="duration" id="duration">
+      <option value="short">Short (0-1.5 minutes)</option>
+      <option value="medium">Medium (1.5 - 3 minutes)</option>
+      <option value="long">Long(3-10minutes)</option>
+      <option value="very-long">Very Long(10+ minutes)</option>
+    </select>
+  </label>
+  <label>Description
+    <textarea
+      name="Description"
+      id="Description"
+      placeholder="Description"
+      cols="30"
+      rows="10"
+    ></textarea>
+  </label>
+  <button type="submit">Update Video Information</button>
+</form>
