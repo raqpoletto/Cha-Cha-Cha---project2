@@ -28,7 +28,7 @@ const index = require("./routes/index.routes");
 app.use("/", index);
 
 const authRoutes = require("./routes/auth.routes");
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
 
 const videoRoutes = require("./routes/video.routes");
 app.use("/", videoRoutes);

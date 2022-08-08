@@ -5,12 +5,18 @@ const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: true
+      /* required: true */
     },
     email: {
       type: String,
-      unique: true,
       required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+      match: [
+        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+        "Please use a valid email address",
+      ],
     },
     password: {
       type: String,
@@ -18,10 +24,10 @@ const userSchema = new Schema(
     },
     level: {
       type: String,
-      enum: ['Beginner', 'Intermediate', 'Advanced'],
-      required: true,
-      default: 'Beginner'
-    }
+      enum: ["Beginner", "Intermediate", "Advanced"],
+      /* required: true, */
+      default: "Beginner",
+    },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
