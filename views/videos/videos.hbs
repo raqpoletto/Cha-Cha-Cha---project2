@@ -1,4 +1,4 @@
-<h1>test</h1>
+<h1>All Videos</h1>
 
 {{#each video}}
     <p>{{title}}</p>
@@ -6,4 +6,8 @@
     <p>{{description}}</p>
     <p>{{duration}}</p>
     <p>{{video}}</p>
+    <form action="/favorites/{{_id}}" method="post">
+        <button type="submit">Add To Favorites</button>
+    </form>
+    <hr>
 {{/each}}

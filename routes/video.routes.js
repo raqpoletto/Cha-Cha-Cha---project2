@@ -3,6 +3,7 @@ const Video = require("../models/Video.model.js");
 
 // require Cloudinary
 const fileUploader = require("../config/cloudinary.config");
+const User = require("../models/User.model.js");
 
 // require axios
 /* const { default: axios } = require('axios');
@@ -11,7 +12,7 @@ const ApiService = require('../services/api.service'); */
 router.get("/videos", (req, res, next) => {
   Video.find().then((video) => {
     res.render("videos/videos", { video });
-    res.json(video);
+    // res.json(video);
   });
 });
 
@@ -71,6 +72,16 @@ router.post("/videos/:videoId/delete", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/favorites/:userId", (req, res, next) => {});
+router.get("/favorites", (req, res, next) => {
+  // res.render('favorites', {User.favorites})
+})
+
+router.post("/favorites/:id", (req, res, next) => {
+  
+  console.log(req.session.user)
+
+  User.findByIdAndUpdate(req.session.user._id, {$push: {favorites: req.params.id}})
+  .then(() => res.redirect("/favorites"))
+});
 
 module.exports = router;
