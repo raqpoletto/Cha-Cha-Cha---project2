@@ -1,13 +1,16 @@
 <h1>All Videos</h1>
 
 {{#each video}}
-    <p>{{title}}</p>
-    <p>{{level}}</p>
-    <p>{{description}}</p>
-    <p>{{duration}}</p>
-    <p>{{video}}</p>
-    <form action="/favorites/{{_id}}" method="post">
-        <button type="submit">Add To Favorites</button>
-    </form>
-    <hr>
+    <div class="card" style="width: 18rem;">
+        <video controls>
+            <source src="{{videoUrl}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text"><b>{{level}}</b></p>
+            <p class="card-text">{{duration}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
 {{/each}}

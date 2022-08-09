@@ -16,9 +16,8 @@ const videoSchema = new Schema({
   duration: {
     type: String,
     enum: ['Short (0-1.5 mins)', 'Medium (1.5-3 mins)','Long (3-10 mins)', 'Very Long (10+ mins)']
-
   },
-  video: {
+  videoUrl: {
     type: String,
     required: true
   }

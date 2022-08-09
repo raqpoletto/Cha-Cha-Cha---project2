@@ -14,7 +14,7 @@ const storage = new CloudinaryStorage({
   params: {
     allowed_formats: ["jpg", "png", "mp4", "mp3"],
     folder: "salsa-project", // The name of the folder in cloudinary
-    resource_type: 'raw' // => this is in case you want to upload other type of files, not just images
+    resource_type: 'video' // => this is in case you want to upload other type of files, not just images
   }
 });
 

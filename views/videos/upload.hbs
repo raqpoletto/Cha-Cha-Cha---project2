@@ -1,6 +1,6 @@
 <h1>Add New Video</h1>
 <hr />
-<form action="/videos/upload" method="post">
+<form action="/videos/upload" method="post" enctype="multipart/form-data">
   <label>
     Title
     <input type="text" name="title" placeholder="Title" />
@@ -8,9 +8,9 @@
 
   <label>Level
     <select name="level" id="level">
-      <option value="beginner">Beginner</option>
-      <option value="intermediate">Intermediate</option>
-      <option value="advanced">Advanced</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
     </select>
   </label>
 
@@ -27,11 +27,16 @@
   <label>
     Duration
     <select name="duration" id="duration">
-      <option value="short">Short (0-1.5 minutes)</option>
-      <option value="medium">Medium (1.5 - 3 minutes)</option>
-      <option value="long">Long(3-10minutes)</option>
-      <option value="very-long">Very Long(10+ minutes)</option>
+      <option value="Short (0-1.5 mins)">Short (0-1.5 minutes)</option>
+      <option value="Medium (1.5-3 mins)">Medium (1.5 - 3 minutes)</option>
+      <option value="Long(3-10minutes)">Long(3-10minutes)</option>
+      <option value="Very Long(10+ minutes)">Very Long(10+ minutes)</option>
     </select>
+  </label>
+
+  <label for="cloudinary">
+    Video
+    <input type="file" name="cloudinary" />
   </label>
 
   <button type="submit">Add New Video</button>

@@ -1,13 +1,15 @@
 const router = require("express").Router();
 const Video = require("../models/Video.model.js");
 
+// body parser
+const bodyParser = require("body-parser")
+router.use(bodyParser.urlencoded({ extended: true }));
+
 // require Cloudinary
 const fileUploader = require("../config/cloudinary.config");
 const User = require("../models/User.model.js");
 
-// require axios
-/* const { default: axios } = require('axios');
-const ApiService = require('../services/api.service'); */
+// start routes
 
 router.get("/videos", (req, res, next) => {
   Video.find().then((video) => {
@@ -20,12 +22,13 @@ router.get("/videos/upload", (req, res, next) => {
   res.render("videos/upload");
 });
 
-router.post("/videos/upload", (req, res, next) => {
-  const { title, level, description, duration, video } = req.body;
+router.post("/videos/upload", fileUploader.single('cloudinary'), (req, res, next) => {
+  /* const videoUrl = req.file.path; */
+  const { title, level, description, duration } = req.body;
 
-  Video.create(req.body)
+  Video.create({title, level, description, duration, videoUrl: req.file.path})
     .then((newVideo) => {
-      res.json(newVideo);
+      res.redirect('/videos')
       console.log("new video created: ", newVideo);
     })
     .catch((err) => console.log(err));
@@ -72,15 +75,15 @@ router.post("/videos/:videoId/delete", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/favorites/:id", (req, res, next) => {
-  // res.render('favorites', {User.favorites})
-  console.log(`req params: ${req.params.id}`)
+router.get("/favorites", /* isLoggedIn, */ (req, res, next) => {
+  const user = req.session.user;
 
-  /* Video.find()
-  .populate(favorites)
-  .then((videos) => {
-    res.render('videos/favorites', {videos})
-  }) */
+  User.findById(user._id)
+  .populate("favorites")
+  .then((userInfo) => {
+    res.render("videos/favorites", userInfo)
+  })
+  .catch((err) => next(err))
 })
 
 router.post("/favorites/:videoId", (req, res, next) => {
