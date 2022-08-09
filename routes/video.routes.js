@@ -84,7 +84,7 @@ router.get("/videos/:videoId/edit", (req, res, next) => {
   Video.findById(req.params.videoId)
     .then((foundVideo) => {
       console.log(foundVideo);
-      res.json(foundVideo);
+      // res.json(foundVideo);
       res.render("videos/edit-video", { foundVideo });
     })
     .catch((err) => console.log(err));
@@ -94,9 +94,9 @@ router.post("/videos/:videoId/edit", (req, res, next) => {
   const { videoId } = req.params.videoId;
 
   Video.findByIdAndUpdate(req.params.videoId, req.body)
-    .then((updatedVideo) => {
-      res.json(updatedVideo);
-      // res.redirect(`/videos/${videoId}`);
+    .then(() => {
+      // res.json(updatedVideo);
+      res.redirect(`/videos`)
     })
     .catch((err) => console.log(err));
 });

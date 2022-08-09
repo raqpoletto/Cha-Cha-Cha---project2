@@ -16,6 +16,12 @@
         <h5>{{title}}</h5>
         <p>{{level}}</p>
     </div>
+    <form action="/videos/{{id}}/edit" method="post">
+        <button type="submit">Edit Video</button>
+    </form>
+    <form action="/videos/{{id}}/delete" method="post">
+        <button type="submit">Delete Video</button>
+    </form>
 </div>
 {{/each}}
 
