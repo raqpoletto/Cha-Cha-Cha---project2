@@ -72,16 +72,28 @@ router.post("/videos/:videoId/delete", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/favorites", (req, res, next) => {
+router.get("/favorites/:id", (req, res, next) => {
   // res.render('favorites', {User.favorites})
+  console.log(`req params: ${req.params.id}`)
+
+  /* Video.find()
+  .populate(favorites)
+  .then((videos) => {
+    res.render('videos/favorites', {videos})
+  }) */
 })
 
-router.post("/favorites/:id", (req, res, next) => {
+router.post("/favorites/:videoId", (req, res, next) => {
   
   console.log(req.session.user)
+  console.log(`req params: ${req.params.videoId}`)
 
-  User.findByIdAndUpdate(req.session.user._id, {$push: {favorites: req.params.id}})
-  .then(() => res.redirect("/favorites"))
+  User.findByIdAndUpdate(req.session.user._id, {$push: {favorites: req.params.videoId}})
+  /* .then((value) => {
+    console.log(`we are returning: ${value}`)
+    if (req.params.id )
+  }) */
+  .then(() => res.redirect("/favorites/" + req.session.user._id))
 });
 
 module.exports = router;
