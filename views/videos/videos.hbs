@@ -1,6 +1,48 @@
 <h1>All Videos</h1>
+<nav>
+    <a href="/videos-easy">Easy</a>
+    <a href="/videos-intermediate">Intermediate</a>
+    <a href="/videos-hard">Advanced</a>
+</nav>
+
 
 {{#each video}}
+<div>
+    <video controls>
+        <source src="{{videoUrl}}" type="video/mp4" alt="video" style="width: 15%">
+        Your browser does not support the video tag.
+    </video>
+    <div>
+        <h5>{{title}}</h5>
+        <p>{{level}}</p>
+    </div>
+</div>
+{{/each}}
+
+{{!-- {{#each video}}
+    <div class="card" style="width: 18rem;">
+        <video controls>
+            <source src="{{videoUrl}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text"><b>{{level}}</b></p>
+            <p class="card-text">{{duration}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+{{/each}} --}}
+
+
+
+
+
+
+{{!-- <form action="/videos-easy" method="get">
+    <button type="submit">Beginner</button>
+
+{{#each easy}}
     <div class="card" style="width: 18rem;">
         <video controls>
             <source src="{{videoUrl}}" type="video/mp4">
@@ -14,3 +56,45 @@
         </div>
     </div>
 {{/each}}
+
+</form>
+
+<form action="/videos-intermediate" method="get">
+    <button type="submit">Intermediate</button>
+
+{{#each intermediate}}
+    <div class="card" style="width: 18rem;">
+        <video controls>
+            <source src="{{videoUrl}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text"><b>{{level}}</b></p>
+            <p class="card-text">{{duration}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+{{/each}}
+
+</form>
+
+<form action="/videos-hard" method="get">
+    <button type="submit">Advanced</button>
+
+{{#each hard}}
+    <div class="card" style="width: 18rem;">
+        <video controls>
+            <source src="{{videoUrl}}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text"><b>{{level}}</b></p>
+            <p class="card-text">{{duration}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+{{/each}}
+
+</form> --}}

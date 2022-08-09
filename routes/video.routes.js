@@ -14,7 +14,7 @@ const User = require("../models/User.model.js");
 router.get("/videos", (req, res, next) => {
   Video.find().then((video) => {
     res.render("videos/videos", { video });
-    // res.json(video);
+    /* res.json(video); */
   });
 });
 
@@ -22,9 +22,45 @@ router.get("/videos/upload", (req, res, next) => {
   res.render("videos/upload");
 });
 
+
+  // Getting the easy videos
+  router.get("/videos-easy", (req, res, next) => {
+    Video.find()
+    .then((allVideos) => {
+      const video = allVideos.map((el) => {
+        if(el.level === "Beginner") return el
+      })
+     res.render("videos/videos", {video})
+    })
+  })
+
+// getting the medium videos
+router.get("/videos-intermediate", (req, res, next) => {
+  Video.find()
+  .then((allVideos) => {
+    const video = allVideos.map((el) => {
+      if(el.level === 'Intermediate') return el
+    })
+    res.render('videos/videos', {video})
+  })
+})
+
+// getting the hard videos
+router.get("/videos-hard", (req, res, next) => {
+  Video.find()
+  .then((allVideos) => {
+    const video = allVideos.map((el) => {
+      if(el.level === 'Advanced') return el
+    })
+    res.render('videos/videos', {video})
+  })
+})
+
 router.post("/videos/upload", fileUploader.single('cloudinary'), (req, res, next) => {
   /* const videoUrl = req.file.path; */
   const { title, level, description, duration } = req.body;
+
+  /* Video.find({name: req.query}) */
 
   Video.create({title, level, description, duration, videoUrl: req.file.path})
     .then((newVideo) => {
