@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+/* * {
+  margin: 0px;
+} */
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -13,4 +19,28 @@ h1 {
 
 nav > a {
   text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: black;
+  padding: 10px;
+}
+
+.nav-links li {
+  display: inline-block;
+  padding: 0 1.25rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  transition: all 0.5s ease 0s;
+}
+
+.nav-links li a:hover {
+  color: rgba(0, 173, 181, 0.8);
 }

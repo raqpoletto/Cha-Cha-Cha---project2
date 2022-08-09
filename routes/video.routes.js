@@ -117,6 +117,7 @@ router.get("/favorites", /* isLoggedIn, */ (req, res, next) => {
   User.findById(user._id)
   .populate("favorites")
   .then((userInfo) => {
+    console.log(userInfo.favorites)
     res.render("videos/favorites", userInfo)
   })
   .catch((err) => next(err))
@@ -132,7 +133,7 @@ router.post("/favorites/:videoId", (req, res, next) => {
     console.log(`we are returning: ${value}`)
     if (req.params.id )
   }) */
-  .then(() => res.redirect("/favorites/" + req.session.user._id))
+  .then(() => res.redirect("/videos"))
 });
 
 module.exports = router;

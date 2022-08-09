@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <nav>
-    <nav class="navbar navbar-dark bg-dark">
-      <a href="/videos">Videos</a>
-      <a href="/videos/upload">Upload</a>
-      <a href="/signup">Signup</a>
-      <a href="/login">Login</a>
-      <a href="/logout">Logout</a>
+    {{!-- <nav class="navbar navbar-dark bg-dark"> --}}
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/videos/upload">Upload</a></li>
+        <li><a href="/videos">Videos</a></li>
+        <li><a href="/favorites">Favorites</a></li>
+        <li><a href="/auth/signup">Signup</a></li>
+        <li><a href="/auth/login">Login</a></li>
+        <li><a href="/auth/logout">Logout</a></li>
+      </ul>
     </nav>
 
   </nav>
