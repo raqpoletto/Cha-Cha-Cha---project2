@@ -1,14 +1,15 @@
 <h1>All Videos</h1>
-<nav>
-    <a href="/videos-easy">Beginner</a>
-    <a href="/videos-intermediate">Intermediate</a>
-    <a href="/videos-hard">Advanced</a>
+<nav class="videos-nav">
+    <a href="/videos" class="video-tablink">All</a>
+    <a href="/videos-easy" class="video-tablink">Beginner</a>
+    <a href="/videos-intermediate" class="video-tablink">Intermediate</a>
+    <a href="/videos-hard" class="video-tablink">Advanced</a>
 </nav>
 
 <div class="all-cards">
     {{#each video}}
     <div class="video-card">
-        <video controls>
+        <video class="video-video" controls>
             <source src="{{videoUrl}}" type="video/mp4" alt="video">
             Your browser does not support the video tag.
         </video>
