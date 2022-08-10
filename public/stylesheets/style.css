@@ -21,6 +21,14 @@ nav > a {
   text-decoration: none;
 }
 
+video {
+  width: 15vw;
+}
+
+.big-video {
+  width: 40vw;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
