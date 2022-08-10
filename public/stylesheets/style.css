@@ -63,3 +63,8 @@ video {
   width: 15px;
   height: 15px;
 }
+
+.video-level,
+.video-description {
+  color: rgb(111, 111, 111)
+}
