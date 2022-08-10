@@ -5,31 +5,34 @@
     <a href="/videos-hard">Advanced</a>
 </nav>
 
+<div class="all-cards">
+    {{#each video}}
+    <div class="video-card">
+        <video controls>
+            <source src="{{videoUrl}}" type="video/mp4" alt="video">
+            Your browser does not support the video tag.
+        </video>
+        <div>
+            <h5>{{title}}</h5>
+            <h6 class="video-level">{{level}}</h6>
+            <p class="video-description"><i>{{description}}</i></p>
+        </div>
+        <div class="video-actions">
+            <form action="/videos/{{_id}}/edit" method="get">
+                <button type="submit"><img src="/images/Pencil_edit_icon-removebg-preview.png" alt="edit button" class="edit-button"></button>
+            </form>
 
-{{#each video}}
-<div>
-    <video controls>
-        <source src="{{videoUrl}}" type="video/mp4" alt="video" style="width: 15%">
-        Your browser does not support the video tag.
-    </video>
-    <div>
-        <h5>{{title}}</h5>
-        <h6 class="video-level">{{level}}</h6>
-        <p class="video-description"><i>{{description}}</i></p>
+            <form action="/videos/{{id}}/delete" method="post">
+                <button type="submit"><img src="/images/delete-garbage-remove-trash-trash-can-icon-695072-removebg-preview.png" alt="delete button" class="delete-button"></button>
+            </form>
+            <form action="/favorites/{{id}}" method="post">
+                <button type="submit">Add To Favorites</button>
+            </form>
+
+        </div>
     </div>
-
-    <form action="/videos/{{_id}}/edit" method="get">
-        <button type="submit"><img src="/images/Pencil_edit_icon-removebg-preview.png" alt="edit button" class="edit-button"></button>
-    </form>
-
-    <form action="/videos/{{id}}/delete" method="post">
-        <button type="submit"><img src="/images/delete-garbage-remove-trash-trash-can-icon-695072-removebg-preview.png" alt="delete button" class="delete-button"></button>
-    </form>
-    <form action="/favorites/{{id}}" method="post">
-        <button type="submit">Add To Favorites</button>
-    </form>
+    {{/each}}
 </div>
-{{/each}}
 
 {{!-- {{#each video}}
     <div class="card" style="width: 18rem;">
