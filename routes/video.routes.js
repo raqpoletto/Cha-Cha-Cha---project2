@@ -105,6 +105,7 @@ router.post("/videos/:videoId/delete", (req, res, next) => {
 
 router.get("/favorites", /* isLoggedIn, */ (req, res, next) => {
   const user = req.session.user;
+  console.log(req.session)
 
   User.findById(user._id)
   .populate("favorites")
@@ -127,23 +128,5 @@ router.post("/favorites/:videoId", (req, res, next) => {
   }) */
   .then(() => res.redirect("/videos"))
 });
-
-
-// DOM manipulation
-if (typeof document !== "undefined") {
-  const button = document.querySelector(".heart-like-button");
-  console.log(button)
-  button.addEventListener("click", () => {
-    console.log(button.classList)
-    if (button.classList.contains("liked")) {
-      button.classList.remove("liked");
-    } else {
-      button.classList.add("liked");
-    }
-  });
-
-}
-
-
 
 module.exports = router;

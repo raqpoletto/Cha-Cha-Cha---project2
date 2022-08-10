@@ -1,4 +1,4 @@
-{{!-- <h1>Add New Video 🎥</h1>
+<h1 class="all-videos-header">Add New Video 🎥</h1>
 <hr />
 <form action="/videos/upload" method="POST" enctype="multipart/form-data">
   <div class="row mb-3">
@@ -17,7 +17,7 @@
           type="radio"
           name="level"
           id="gridRadios1"
-          value="option1"
+          value="Beginner"
           checked
         />
         <label class="form-check-label" for="gridRadios1">
@@ -30,7 +30,7 @@
           type="radio"
           name="level"
           id="gridRadios2"
-          value="option2"
+          value="Intermediate"
         />
         <label class="form-check-label" for="gridRadios2">
           Intermediate
@@ -42,7 +42,7 @@
           type="radio"
           name="level"
           id="gridRadios3"
-          value="option3"
+          value="Advanced"
         />
         <label class="form-check-label" for="gridRadios3">
           Advanced
@@ -76,7 +76,7 @@
           type="radio"
           name="duration"
           id="gridRadios1"
-          value="option1"
+          value="Short (0-1.5 mins)"
           checked
         />
    
@@ -123,14 +123,14 @@
 
   <button type="submit" class="btn btn-primary">Add New Video</button>
 
-</form> --}}
+</form>
 
 
 
 
 {{!-- OLD UPLOAD PAGE --}}
 
-<h1>Add New Video</h1>
+{{!-- <h1>Add New Video</h1>
 <hr />
 <form action="/videos/upload" method="post" enctype="multipart/form-data">
   <label>
@@ -172,4 +172,4 @@
   </label>
 
   <button type="submit">Add New Video</button>
-</form>
+</form> --}}
