@@ -74,6 +74,7 @@ router.get("/videos/:videoId/edit", (req, res, next) => {
 
   Video.findById(req.params.videoId)
     .then((foundVideo) => {
+
       console.log(foundVideo);
       // res.json(foundVideo);
       res.render("videos/edit-video", { foundVideo });
