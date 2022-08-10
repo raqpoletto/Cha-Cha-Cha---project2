@@ -1,4 +1,4 @@
-<h1>All Videos</h1>
+<h1 class="all-videos-header">All Videos</h1>
 <nav class="videos-nav">
     <a href="/videos" class="video-tablink">All</a>
     <a href="/videos-easy" class="video-tablink">Beginner</a>
@@ -26,9 +26,14 @@
             <form action="/videos/{{id}}/delete" method="post">
                 <button type="submit"><img src="/images/delete-garbage-remove-trash-trash-can-icon-695072-removebg-preview.png" alt="delete button" class="delete-button"></button>
             </form>
-            <form action="/favorites/{{id}}" method="post">
+
+            <div id="heart-container">
+                <div class="heart-like-button"></div>
+            </div>
+
+            {{!-- <form action="/favorites/{{id}}" method="post">
                 <button type="submit">Add To Favorites</button>
-            </form>
+            </form> --}}
 
         </div>
     </div>
