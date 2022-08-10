@@ -25,33 +25,24 @@ router.get("/videos/upload", (req, res, next) => {
 
   // Getting the easy videos
   router.get("/videos-easy", (req, res, next) => {
-    Video.find()
-    .then((allVideos) => {
-      const video = allVideos.map((el) => {
-        if(el.level === "Beginner") return el
-      })
+    Video.find({level: 'Beginner'})
+    .then((video) => {
      res.render("videos/videos", {video})
     })
   })
 
 // getting the medium videos
 router.get("/videos-intermediate", (req, res, next) => {
-  Video.find()
-  .then((allVideos) => {
-    const video = allVideos.map((el) => {
-      if(el.level === 'Intermediate') return el
-    })
+  Video.find({level: 'Intermediate'})
+  .then((video) => {
     res.render('videos/videos', {video})
   })
 })
 
 // getting the hard videos
 router.get("/videos-hard", (req, res, next) => {
-  Video.find()
-  .then((allVideos) => {
-    const video = allVideos.map((el) => {
-      if(el.level === 'Advanced') return el
-    })
+  Video.find({level: 'Advanced'})
+  .then((video) => {
     res.render('videos/videos', {video})
   })
 })
@@ -91,9 +82,9 @@ router.get("/videos/:videoId/edit", (req, res, next) => {
 });
 
 router.post("/videos/:videoId/edit", (req, res, next) => {
-  const { videoId } = req.params.videoId;
+  const  videoId = req.params.videoId;
 
-  Video.findByIdAndUpdate(req.params.videoId, req.body)
+  Video.findByIdAndUpdate(videoId, req.body)
     .then(() => {
       // res.json(updatedVideo);
       res.redirect(`/videos`)
