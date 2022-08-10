@@ -108,7 +108,7 @@ router.get("/favorites", /* isLoggedIn, */ (req, res, next) => {
   User.findById(user._id)
   .populate("favorites")
   .then((userInfo) => {
-    console.log(userInfo.favorites)
+    console.log(userInfo)
     res.render("videos/favorites", userInfo)
   })
   .catch((err) => next(err))
