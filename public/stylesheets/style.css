@@ -53,3 +53,13 @@ video {
 .nav-links li a:hover {
   color: rgba(0, 173, 181, 0.8);
 }
+
+.edit-button {
+  width: 15px;
+  height: 15px;
+}
+
+.delete-button {
+  width: 15px;
+  height: 15px;
+}

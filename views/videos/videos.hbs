@@ -14,13 +14,16 @@
     </video>
     <div>
         <h5>{{title}}</h5>
-        <p>{{level}}</p>
+        <h6>{{level}}</h6>
+        <p><i>{{description}}</i></p>
     </div>
+
     <form action="/videos/{{_id}}/edit" method="get">
-        <button type="submit">Edit Video</button>
+        <button type="submit"><img src="/images/Pencil_edit_icon-removebg-preview.png" alt="edit button" class="edit-button"></button>
     </form>
+
     <form action="/videos/{{id}}/delete" method="post">
-        <button type="submit">Delete Video</button>
+        <button type="submit"><img src="/images/delete-garbage-remove-trash-trash-can-icon-695072-removebg-preview.png" alt="delete button" class="delete-button"></button>
     </form>
     <form action="/favorites/{{id}}" method="post">
         <button type="submit">Add To Favorites</button>
