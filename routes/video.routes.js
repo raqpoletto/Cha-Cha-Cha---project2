@@ -29,24 +29,46 @@ router.get("/videos/upload", (req, res, next) => {
 });
 
 // Getting the easy videos
-router.get("/videos-easy", (req, res, next) => {
-  Video.find({ level: "Beginner" }).then((video) => {
-    res.render("videos/videos", { video });
-  });
+
+router.get("/videos-easy", async (req, res, next) => {
+  let video = await Video.find({ level: "Beginner" });
+
+  if(!req.session.user){
+    res.render("videos/videos", { video});
+  } else {
+    let user = await User.findById(req.session.user._id)
+    res.render("videos/videos", { video, user });
+    console.log(user)
+  }
+
 });
 
 // getting the medium videos
-router.get("/videos-intermediate", (req, res, next) => {
-  Video.find({ level: "Intermediate" }).then((video) => {
-    res.render("videos/videos", { video });
-  });
+router.get("/videos-intermediate", async (req, res, next) => {
+  let video = await Video.find({ level: "Intermediate" });
+
+  if(!req.session.user){
+    res.render("videos/videos", { video});
+  } else {
+    let user = await User.findById(req.session.user._id)
+    res.render("videos/videos", { video, user });
+    console.log(user)
+  }
+
 });
 
 // getting the hard videos
-router.get("/videos-hard", (req, res, next) => {
-  Video.find({ level: "Advanced" }).then((video) => {
-    res.render("videos/videos", { video });
-  });
+router.get("/videos-hard", async (req, res, next) => {
+  let video = await Video.find({ level: "Advanced" });
+
+  if(!req.session.user){
+    res.render("videos/videos", { video});
+  } else {
+    let user = await User.findById(req.session.user._id)
+    res.render("videos/videos", { video, user });
+    console.log(user)
+  }
+
 });
 
 router.post(
@@ -114,18 +136,21 @@ router.post("/videos/:videoId/delete", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
+
 router.get("/favorites", (req, res, next) => {
   const user = req.session.user;
-  console.log(req.session);
 
   User.findById(user._id)
     .populate("favorites")
     .then((userInfo) => {
+      userInfo.favorites.forEach((el) => {
+        el.isFavorite = true
+      })
       console.log(userInfo);
       res.render("videos/favorites", userInfo);
     })
     .catch((err) => next(err));
-});
+}); 
 
 router.post("/favorites/:videoId", async (req, res, next) => {
   console.log(req.session.user);
