@@ -1,5 +1,15 @@
 <h1 class="all-videos-header">Edit Video 🎥</h1>
 <hr />
+
+<div class="big-video-control">
+  <video controls class="big-video">
+          <source src="{{foundVideo.videoUrl}}" type="video/mp4" alt="video" style="width: 15%">
+          Your browser does not support the video tag.
+  </video>
+</div>
+
+
+
 <form action="/videos/{{foundVideo._id}}/edit" method="POST">
   <div class="row mb-3">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
@@ -191,7 +201,7 @@
           class="form-check-input"
           type="radio"
           name="duration"
-          id="gridRadios2" value="Long (3-5 mins)">
+          id="gridRadios2" value="Long (3-10 mins)">
       
           <label class="form-check-label" for="gridRadios3">Long (3-10 mins)</label>
       </div>
@@ -225,8 +235,7 @@
           class="form-check-input"
           type="radio"
           name="duration"
-          id="gridRadios2" value="Medium (1.5-3 mins)
-          "
+          id="gridRadios2" value="Medium (1.5-3 mins)"
           checked>
           <label class="form-check-label" for="gridRadios2">Medium (1.5-3 mins)</label>
       </div>
@@ -236,7 +245,7 @@
           class="form-check-input"
           type="radio"
           name="duration"
-          id="gridRadios2" value="Long (3-5 mins)">
+          id="gridRadios2" value="Long (3-10 mins)">
       
           <label class="form-check-label" for="gridRadios3">Long (3-10 mins)</label>
       </div>
@@ -346,15 +355,10 @@
     </div>
     {{/ifEquals}}
   </fieldset>
-    
 
-
-<video controls class="big-video">
-        <source src="{{foundVideo.videoUrl}}" type="video/mp4" alt="video" style="width: 15%">
-        Your browser does not support the video tag.
-</video>
-
-  <button type="submit" class="btn btn-primary">Update Video</button>
+  <div class="big-bottom-button">
+    <button type="submit" class="btn btn-primary btn-align">Update Video</button>
+  </div>
 
 </form>
 

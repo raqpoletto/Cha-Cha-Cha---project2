@@ -32,6 +32,12 @@ video {
   height: 50vh;
 }
 
+.big-video-control {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -135,7 +141,7 @@ video {
   width: 30vw;
 }
 
-.signup-button {
+.big-bottom-button {
   display: flex;
   justify-content: center;
 }
