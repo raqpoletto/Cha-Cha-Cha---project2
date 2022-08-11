@@ -9,6 +9,7 @@ const saltRounds = 10;
 
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
+const fileUploader = require("../config/cloudinary.config");
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
@@ -61,6 +62,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((hashedPassword) => {
         // Create a user and save it in the database
         return User.create({
+          name,
           email,
           password: hashedPassword,
         });
@@ -68,8 +70,8 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((user) => {
         // Bind the user to the session object
         req.session.user = user;
-        /* req.app.locals.loggedInUser = user; */
-        res.redirect("/");
+        req.app.locals.loggedInUser = user;
+        res.redirect("/videos");
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -151,6 +153,62 @@ router.get("/logout", isLoggedIn, (req, res) => {
         .render("auth/logout", { errorMessage: err.message });
     }
     res.redirect("/");
+  });
+});
+
+// Profile page
+
+router.get("/profile", isLoggedIn, (req, res, next) => {
+  User.findById(req.session.user._id).then((user) => {
+    console.log(user);
+    res.render("profile", { user });
+  });
+});
+
+// Edit profile page
+
+router.get("/profile/:id/edit", isLoggedIn, (req, res, next) => {
+  User.findById(req.session.user._id)
+    .then((user) => res.render("profile-edit", user))
+    .catch((err) => next(err));
+});
+
+router.post(
+  "/profile/:id/edit",
+  isLoggedIn,
+  fileUploader.single("avatar"),
+  isLoggedIn,
+  (req, res, next) => {
+    const { id } = req.params;
+    const { email, password } = req.body;
+    if (!req.file) {
+      User.findByIdAndUpdate(id, { level, avatar })
+        .then(() => {
+          return res.redirect("/profile");
+        })
+        .catch((err) => next(err));
+    } else {
+      const avatar = req.file.path;
+      User.findByIdAndUpdate(id, { level, avatar }).then(() => {
+        return res.redirect("/profile");
+      });
+    }
+  }
+);
+
+// Delete profile page
+
+router.post("/profile/:id/delete", isLoggedIn, (req, res, next) => {
+  req.app.locals.loggedInUser = null;
+  User.findByIdAndDelete(req.session.user._id).then(() => {
+    req.session.destroy((err) => {
+      if (err) {
+        return res
+          .status(500)
+          .render("auth/logout", { errorMessage: err.message });
+      }
+      res.redirect("/");
+    });
   });
 });
 

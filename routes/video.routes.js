@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Video = require("../models/Video.model.js");
 
 // body parser
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
 
 // require Cloudinary
@@ -22,44 +22,50 @@ router.get("/videos/upload", (req, res, next) => {
   res.render("videos/upload");
 });
 
-
-  // Getting the easy videos
-  router.get("/videos-easy", (req, res, next) => {
-    Video.find({level: 'Beginner'})
-    .then((video) => {
-     res.render("videos/videos", {video})
-    })
-  })
+// Getting the easy videos
+router.get("/videos-easy", (req, res, next) => {
+  Video.find({ level: "Beginner" }).then((video) => {
+    res.render("videos/videos", { video });
+  });
+});
 
 // getting the medium videos
 router.get("/videos-intermediate", (req, res, next) => {
-  Video.find({level: 'Intermediate'})
-  .then((video) => {
-    res.render('videos/videos', {video})
-  })
-})
+  Video.find({ level: "Intermediate" }).then((video) => {
+    res.render("videos/videos", { video });
+  });
+});
 
 // getting the hard videos
 router.get("/videos-hard", (req, res, next) => {
-  Video.find({level: 'Advanced'})
-  .then((video) => {
-    res.render('videos/videos', {video})
-  })
-})
-
-router.post("/videos/upload", fileUploader.single('cloudinary'), (req, res, next) => {
-  /* const videoUrl = req.file.path; */
-  const { title, level, description, duration } = req.body;
-
-  /* Video.find({name: req.query}) */
-
-  Video.create({title, level, description, duration, videoUrl: req.file.path})
-    .then((newVideo) => {
-      res.redirect('/videos')
-      console.log("new video created: ", newVideo);
-    })
-    .catch((err) => console.log(err));
+  Video.find({ level: "Advanced" }).then((video) => {
+    res.render("videos/videos", { video });
+  });
 });
+
+router.post(
+  "/videos/upload",
+  fileUploader.single("cloudinary"),
+  (req, res, next) => {
+    /* const videoUrl = req.file.path; */
+    const { title, level, description, duration } = req.body;
+
+    /* Video.find({name: req.query}) */
+
+    Video.create({
+      title,
+      level,
+      description,
+      duration,
+      videoUrl: req.file.path,
+    })
+      .then((newVideo) => {
+        res.redirect("/videos");
+        console.log("new video created: ", newVideo);
+      })
+      .catch((err) => console.log(err));
+  }
+);
 
 router.get("/videos/:videoId", (req, res, next) => {
   Video.findById(req.params.videoId).then((oneVideo) => {
@@ -74,7 +80,6 @@ router.get("/videos/:videoId/edit", (req, res, next) => {
 
   Video.findById(req.params.videoId)
     .then((foundVideo) => {
-
       console.log(foundVideo);
       // res.json(foundVideo);
       res.render("videos/edit-video", { foundVideo });
@@ -83,12 +88,12 @@ router.get("/videos/:videoId/edit", (req, res, next) => {
 });
 
 router.post("/videos/:videoId/edit", (req, res, next) => {
-  const  videoId = req.params.videoId;
+  const videoId = req.params.videoId;
 
   Video.findByIdAndUpdate(videoId, req.body)
     .then(() => {
       // res.json(updatedVideo);
-      res.redirect(`/videos`)
+      res.redirect(`/videos`);
     })
     .catch((err) => console.log(err));
 });
@@ -103,30 +108,34 @@ router.post("/videos/:videoId/delete", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/favorites", /* isLoggedIn, */ (req, res, next) => {
-  const user = req.session.user;
-  console.log(req.session)
+router.get(
+  "/favorites",
+  /* isLoggedIn, */ (req, res, next) => {
+    const user = req.session.user;
+    console.log(req.session);
 
-  User.findById(user._id)
-  .populate("favorites")
-  .then((userInfo) => {
-    console.log(userInfo)
-    res.render("videos/favorites", userInfo)
-  })
-  .catch((err) => next(err))
-})
+    User.findById(user._id)
+      .populate("favorites")
+      .then((userInfo) => {
+        console.log(userInfo);
+        res.render("videos/favorites", userInfo);
+      })
+      .catch((err) => next(err));
+  }
+);
 
 router.post("/favorites/:videoId", (req, res, next) => {
-  
-  console.log(req.session.user)
-  console.log(`req params: ${req.params.videoId}`)
+  console.log(req.session.user);
+  console.log(`req params: ${req.params.videoId}`);
 
-  User.findByIdAndUpdate(req.session.user._id, {$push: {favorites: req.params.videoId}})
-  /* .then((value) => {
+  User.findByIdAndUpdate(req.session.user._id, {
+    $push: { favorites: req.params.videoId },
+  })
+    /* .then((value) => {
     console.log(`we are returning: ${value}`)
     if (req.params.id )
   }) */
-  .then(() => res.redirect("/videos"))
+    .then(() => res.redirect("/videos"));
 });
 
 module.exports = router;

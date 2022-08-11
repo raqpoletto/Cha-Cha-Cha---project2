@@ -19,8 +19,10 @@ const app = express();
 require("./config")(app);
 
 hbs.registerHelper("ifEquals", function (a, b, options) {
-    if (a == b) { return options.fn(this); }
-    return options.inverse(this);
+  if (a == b) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
 });
 
 const capitalized = require("./utils/capitalized");

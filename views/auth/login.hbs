@@ -14,7 +14,10 @@
       </div>
     </div>
     <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+      <label
+        for="inputPassword3"
+        class="col-sm-2 col-form-label"
+      >Password</label>
       <div class="col-sm-10">
         <input
           type="password"
@@ -26,7 +29,9 @@
       </div>
     </div>
     <hr />
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary">
+      <a href="/">
+        Login</a></button>
   </form>
 
   {{#if errorMessage}}
@@ -34,9 +39,7 @@
   {{/if}}
 </div>
 
-
-
-{{!-- OLD LOGIN --}}
+{{! OLD LOGIN }}
 
 {{!-- <form action="auth/login" method="POST">
   <label>

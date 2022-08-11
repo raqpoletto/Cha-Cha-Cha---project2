@@ -1,0 +1,55 @@
+<h1>Edit Profile</h1>
+
+<form
+  action="/profile/{{_id}}/edit"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <fieldset class="row mb-3">
+    <legend class="col-form-label col-sm-2 pt-0">Level</legend>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gridRadios"
+          id="gridRadios1"
+          value="option1"
+          checked
+        />
+        <label class="form-check-label" for="gridRadios1">
+          Beginner
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gridRadios"
+          id="gridRadios2"
+          value="option2"
+        />
+        <label class="form-check-label" for="gridRadios2">
+          Intermediate
+        </label>
+      </div>
+      <div class="form-check disabled">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gridRadios"
+          id="gridRadios3"
+          value="option3"
+        />
+        <label class="form-check-label" for="gridRadios3">
+          Advanced
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+  <label class="new-avatar" for="avatar">Upload new photo</label>
+  <input type="file" name="avatar" id="avatar" />
+  <button class="create-profile-btn" type="submit">Save changes</button>
+
+</form>

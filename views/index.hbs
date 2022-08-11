@@ -1,10 +1,45 @@
-<h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+{{! <h1>Welcome to Cha-Cha-Cha! 💃</h1> }}
 
-<a href="/videos">Videos</a>
-<hr />
-<a href="/auth/signup">Signup</a>
-<hr />
-<a href="/auth/login">Login</a>
-<hr />
-<a href="/auth/logout">Logout</a>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * { box-sizing: border-box; } body { margin: 0; font-family: Arial;
+      font-size: 17px; } #myVideo { position: fixed; right: 0; bottom: 0;
+      min-width: 100%; min-height: 80%; } .content { position: fixed; bottom: 0;
+      background: rgba(0, 0, 0, 0.5); color: #f1f1f1; width: 100%; padding:
+      20px; } #myBtn { width: 200px; font-size: 18px; padding: 10px; border:
+      none; background: #000; color: #fff; cursor: pointer; } #myBtn:hover {
+      background: #ddd; color: black; }
+    </style>
+  </head>
+  <body>
+
+    <video autoplay muted loop id="myVideo">
+      <source
+        src="https://res.cloudinary.com/poletto/video/upload/v1660175705/Y2Mate.is_-_Son_elegante_Cubano_en_Paseo_del_PRADO_de_La_Habana_SalsaCubana_SonCubano_SonModerno-CgU3tXJGf-8-720p-1660175447661_vdsuou.mp4"
+        type="video/mp4"
+      />
+      Your browser does not support HTML5 video.
+    </video>
+
+    <div class="content">
+      <h1>About</h1>
+      <p>This project came from the passion and determination of two friends who
+        love to dance salsa. Salsa, more precisely Cuban, brings the desire to
+        overcome daily stress and make more friends. Dance is a means of
+        communication of bodies and state of mind. Phil and Raquel would like to
+        invite everyone to participate in this platform and dance the
+        Cha-Cha-Cha!!!</p>
+      <button id="myBtn" onclick="myFunction()">Pause</button>
+    </div>
+
+    <script>
+      let video = document.getElementById("myVideo"); let btn =
+      document.getElementById("myBtn"); function myFunction() { if
+      (video.paused) { video.play(); btn.innerHTML = "Pause"; } else {
+      video.pause(); btn.innerHTML = "Play"; } }
+    </script>
+
+  </body>
+</html>
