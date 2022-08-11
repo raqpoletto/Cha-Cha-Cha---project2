@@ -56,14 +56,31 @@ video {
   color: rgba(0, 173, 181, 0.8);
 }
 
+.edit-image {
+  width: 16px;
+  height: 18px;
+}
+
 .edit-button {
-  width: 15px;
-  height: 15px;
+  background-color: lightgreen;
+  border: 0px solid grey;
+  padding: 5px 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+
+.delete-image {
+  width: 19px;
+  height: 18px;
 }
 
 .delete-button {
-  width: 15px;
-  height: 15px;
+  background-color: lightblue;
+  border: 0px solid grey;
+  padding: 5px 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
 
 .video-level,
@@ -92,9 +109,10 @@ video {
 }
 
 .video-actions {
+  width: 20vw;
   display: flex;
-  justify-content: baseline;
-  align-items: baseline;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .all-cards {

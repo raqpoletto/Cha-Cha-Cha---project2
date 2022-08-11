@@ -1,4 +1,4 @@
-<h1 class="all-videos-header">All Videos</h1>
+<h1 class="all-videos-header">Videos 📽</h1>
 <nav class="videos-nav">
     <a href="/videos" class="video-tablink">All</a>
     <a href="/videos-easy" class="video-tablink">Beginner</a>
@@ -18,13 +18,15 @@
             <h6 class="video-level">{{level}}</h6>
             <p class="video-description"><i>{{description}}</i></p>
         </div>
+
+
         <div class="video-actions">
             <form action="/videos/{{_id}}/edit" method="get">
-                <button type="submit"><img src="/images/Pencil_edit_icon-removebg-preview.png" alt="edit button" class="edit-button"></button>
+                <button type="submit" class="edit-button"><img src="/images/Pencil_edit_icon-removebg-preview.png" alt="edit button" class="edit-image"></button>
             </form>
 
             <form action="/videos/{{id}}/delete" method="post">
-                <button type="submit"><img src="/images/delete-garbage-remove-trash-trash-can-icon-695072-removebg-preview.png" alt="delete button" class="delete-button"></button>
+                <button type="submit" class="delete-button"><img src="/images/delete-garbage-remove-trash-trash-can-icon-695072-removebg-preview.png" alt="delete button" class="delete-image"></button>
             </form>
             
             
@@ -48,11 +50,6 @@
             {{/ifIncludes}}
             </form>
             {{/if}}
-         
-
-            <form action="/favorites/{{id}}" method="post">
-                <button type="submit">Add To Favorites</button>
-            </form>
 
         </div>
     </div>
@@ -138,3 +135,9 @@
 {{/each}}
 
 </form> --}}
+
+
+{{!-- 
+            <form action="/favorites/{{id}}" method="post">
+                <button type="submit">Add To Favorites</button>
+            </form> --}}
