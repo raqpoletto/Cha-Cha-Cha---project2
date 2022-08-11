@@ -108,21 +108,18 @@ router.post("/videos/:videoId/delete", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-router.get(
-  "/favorites",
-  /* isLoggedIn, */ (req, res, next) => {
-    const user = req.session.user;
-    console.log(req.session);
+router.get("/favorites", (req, res, next) => {
+  const user = req.session.user;
+  console.log(req.session);
 
-    User.findById(user._id)
-      .populate("favorites")
-      .then((userInfo) => {
-        console.log(userInfo);
-        res.render("videos/favorites", userInfo);
-      })
-      .catch((err) => next(err));
-  }
-);
+  User.findById(user._id)
+    .populate("favorites")
+    .then((userInfo) => {
+      console.log(userInfo);
+      res.render("videos/favorites", userInfo);
+    })
+    .catch((err) => next(err));
+});
 
 router.post("/favorites/:videoId", (req, res, next) => {
   console.log(req.session.user);

@@ -158,3 +158,8 @@ video {
   text-decoration: none;
   color: white;
 }
+
+.user-avatar {
+  width: 12vw;
+  height: 15vw;
+}
