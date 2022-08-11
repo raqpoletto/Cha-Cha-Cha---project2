@@ -75,7 +75,6 @@ video {
   border-radius: 5px;
 }
 
-
 .delete-image {
   width: 19px;
   height: 18px;
@@ -188,7 +187,22 @@ video {
   height: 15vw;
 }
 
-/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+.auth-buttons {
+  margin: 20px;
+}
+
+.btn-primary {
+  background-color: #bb7580;
+  border: #bb7580;
+}
+
+.profile-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 .card {
   height: 100%;
@@ -217,5 +231,5 @@ video {
 .card .btn:hover {
   background-color: rgba(0, 128, 128, 0.7);
   color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-} */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}

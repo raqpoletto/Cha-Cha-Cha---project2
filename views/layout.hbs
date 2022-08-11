@@ -11,11 +11,13 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/stylesheets/index.css" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
 
     <header>
+      {{#if loggedInUser}}
       <div class="px-3 py-2 text-bg-dark">
         <div class="container">
           <div
@@ -47,7 +49,7 @@
                   Home
                 </a>
               </li>
-              {{#if loggedInUser}}
+              
                 <li>
                   <a href="/auth/profile" class="nav-link text-white">
                     <svg
@@ -88,7 +90,7 @@
                     Favorites
                   </a>
                 </li>
-              {{/if}}
+              
               <li>
                 <a href="/auth/logout" class="nav-link text-white">
                   <svg
@@ -111,9 +113,9 @@
           >
 
           </form>
-
+          {{/if}}
           {{#unless loggedInUser}}
-            <div class="text-end">
+            <div class="text-end auth-buttons">
               <button type="button" class="btn btn-light text-dark me-2"><a
                   href="/auth/login"
                   class="login-button"
@@ -126,6 +128,7 @@
                   Sign-up</a></button>
             </div>
           {{/unless}}
+
         </div>
       </div>
     </header>

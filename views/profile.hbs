@@ -1,16 +1,18 @@
-{{#with user}}
-  <h1>Hello, {{name}}</h1>
-  <div class="card" style="width: 18rem;">
-    <img src="{{avatar}}" class="card-img-top" alt="avatar" />
-    <div class="card-body">
-      <h5 class="card-title"></h5>
-      <p class="card-text">Name: {{name}}</p>
-      <p class="card-text">Email: {{email}}</p>
-      <p class="card-text">Level: {{level}}</p>
-      <a href="/favorites" class="btn btn-primary">Favorite Videos</a>
+<div class="profile-card">
+  {{#with user}}
+    <div class="card" style="width: 18rem;">
+      <h1>Hello, {{name}}</h1>
+      <img src="{{avatar}}" class="card-img-top" alt="avatar" />
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <p class="card-text">Name: {{name}}</p>
+        <p class="card-text">Email: {{email}}</p>
+        <p class="card-text">Level: {{level}}</p>
+        <a href="/favorites" class="btn btn-primary">Favorite Videos</a>
+      </div>
     </div>
-  </div>
-{{/with}}
+  {{/with}}
+</div>
 
 {{!-- <img class="user-avatar" src="{{avatar}}" />
 <h1 class="">Hello, {{name}}</h1>
