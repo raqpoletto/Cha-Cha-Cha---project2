@@ -169,6 +169,7 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
 // Edit profile page
 
 router.get("/profile/:id/edit", isLoggedIn, (req, res, next) => {
+  const user = req.session.user;
   User.findById(req.session.user._id)
     .then((user) => res.render("profile-edit", user))
     .catch((err) => next(err));
