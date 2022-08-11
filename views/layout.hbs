@@ -67,6 +67,7 @@
                   Videos
                 </a>
               </li>
+              {{#if loggedInUser}}
               <li>
                 <a href="/favorites" class="nav-link text-white">
                   <svg
@@ -77,6 +78,7 @@
                   Favorites
                 </a>
               </li>
+              {{/if}}
               <li>
                 <a href="/auth/logout" class="nav-link text-white">
                   <svg

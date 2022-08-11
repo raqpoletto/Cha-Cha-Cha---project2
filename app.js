@@ -25,6 +25,13 @@ hbs.registerHelper("ifEquals", function (a, b, options) {
   return options.inverse(this);
 });
 
+hbs.registerHelper("ifIncludes", function (a, b, options) {
+  if (a.includes(b)) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
 const capitalized = require("./utils/capitalized");
 const projectName = "Salsa Project";
 
@@ -42,5 +49,6 @@ app.use("/", videoRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
+
 
 module.exports = app;

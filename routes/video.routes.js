@@ -11,11 +11,17 @@ const User = require("../models/User.model.js");
 
 // start routes
 
-router.get("/videos", (req, res, next) => {
-  Video.find().then((video) => {
-    res.render("videos/videos", { video });
-    /* res.json(video); */
-  });
+router.get("/videos", async (req, res, next) => {
+  let video = await Video.find();
+
+  if(!req.session.user){
+    res.render("videos/videos", { video});
+  } else {
+    let user = await User.findById(req.session.user._id)
+    res.render("videos/videos", { video, user });
+    console.log(user)
+  }
+
 });
 
 router.get("/videos/upload", (req, res, next) => {
@@ -121,18 +127,26 @@ router.get("/favorites", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.post("/favorites/:videoId", (req, res, next) => {
+router.post("/favorites/:videoId", async (req, res, next) => {
   console.log(req.session.user);
-  console.log(`req params: ${req.params.videoId}`);
+  const {videoId} = req.params
+  console.log(`req params: ${videoId}`);
 
-  User.findByIdAndUpdate(req.session.user._id, {
-    $push: { favorites: req.params.videoId },
-  })
-    /* .then((value) => {
-    console.log(`we are returning: ${value}`)
-    if (req.params.id )
-  }) */
-    .then(() => res.redirect("/videos"));
+  let user = await User.findById(req.session.user._id)
+  console.log('User in route', user)
+
+  if(user.favorites.includes(videoId)){
+    await User.findByIdAndUpdate(req.session.user._id, {
+      $pull: { favorites: videoId },
+    })
+      res.redirect("/videos")
+  } else {
+    await User.findByIdAndUpdate(req.session.user._id, {
+      $push: { favorites: req.params.videoId },
+    })
+    res.redirect("/videos")
+  }
+
 });
 
 module.exports = router;
