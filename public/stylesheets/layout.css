@@ -1,9 +1,9 @@
-/* .form-control-dark {
+.form-control-dark {
   border-color: var(--bs-gray);
 }
 .form-control-dark:focus {
   border-color: #fff;
-  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
 }
 
 .text-small {
@@ -12,4 +12,9 @@
 
 .dropdown-toggle {
   outline: 0;
-} */
+}
+
+header {
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}

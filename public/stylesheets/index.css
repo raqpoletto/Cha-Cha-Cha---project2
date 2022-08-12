@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap");
 /* * {
   box-sizing: border-box;
 } */
@@ -7,6 +8,9 @@
   font-family: Arial;
   font-size: 17px;
 } */
+span {
+  font-family: "Grape Nuts", cursive;
+}
 
 #myVideo {
   position: fixed;
