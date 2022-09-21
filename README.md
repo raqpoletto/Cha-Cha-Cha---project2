@@ -132,7 +132,7 @@ The url to your repository and to your deployed project
 
 [Repository Link]()
 
-[Deploy Link]()
+[Deploy Link](https://project2i.herokuapp.com/)
 
 
 
